@@ -24,3 +24,5 @@ hs_err_pid*
 replay_pid*
 live-classes/00-JEA-SB-Hello/mvnw
 live-classes/00-JEA-SB-Hello/mvnw.cmd
+live-classes/02-JEA-SB-web-datajpa/mvnw
+live-classes/02-JEA-SB-web-datajpa/mvnw.cmd
