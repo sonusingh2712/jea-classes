@@ -26,3 +26,12 @@ live-classes/00-JEA-SB-Hello/mvnw
 live-classes/00-JEA-SB-Hello/mvnw.cmd
 live-classes/02-JEA-SB-web-datajpa/mvnw
 live-classes/02-JEA-SB-web-datajpa/mvnw.cmd
+live-classes/03-JEA-SB-springbreans/.mvn/wrapper/maven-wrapper.properties
+live-classes/03-JEA-SB-springbreans/mvnw
+live-classes/03-JEA-SB-springbreans/mvnw.cmd
+live-classes/04-JEA-SB-actuators/.mvn/wrapper/maven-wrapper.properties
+live-classes/04-JEA-SB-actuators/mvnw
+live-classes/04-JEA-SB-actuators/mvnw.cmd
+live-classes/05-JEA-RestApi-Part-1/.mvn/wrapper/maven-wrapper.properties
+live-classes/05-JEA-RestApi-Part-1/mvnw
+live-classes/05-JEA-RestApi-Part-1/mvnw.cmd
