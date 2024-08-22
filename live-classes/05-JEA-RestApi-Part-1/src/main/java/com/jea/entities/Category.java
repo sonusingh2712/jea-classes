@@ -2,6 +2,8 @@ package com.jea.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -20,6 +22,7 @@ public class Category {
 	private Long categoryId;
 	private String categoryName;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "category")
 	private List<Product> product;
 	

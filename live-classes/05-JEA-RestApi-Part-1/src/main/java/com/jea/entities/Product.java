@@ -30,6 +30,6 @@ public class Product {
 	private String barCode; // Bar-code should be auto-generated.
 	
 	@ManyToOne
-	@JoinColumn(name = "cat_id")
+	@JoinColumn(name = "category_id")
 	private Category category;
 }
