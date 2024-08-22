@@ -1,8 +1,8 @@
 package com.jea.service.impl;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.jea.entities.Category;
 import com.jea.repository.CategoryRepository;
@@ -10,6 +10,7 @@ import com.jea.service.CategoryService;
 
 import jakarta.persistence.EntityNotFoundException;
 
+@Service
 public class CategoryServiceImpl implements CategoryService {
 	
 	@Autowired
@@ -31,9 +32,9 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public Category updateCategoryInfo(Category category) {
-		Category savedCategory = getById(category.getCategoryid());
-		savedCategory.setCategoryname(category.getCategoryname());
+	public Category updateCategoryInfo(Long categoryid, Category category) {
+		Category savedCategory = getById(categoryid);
+		savedCategory.setCategoryName(category.getCategoryName());
 		return categoryRepository.save(savedCategory);
 	}
 

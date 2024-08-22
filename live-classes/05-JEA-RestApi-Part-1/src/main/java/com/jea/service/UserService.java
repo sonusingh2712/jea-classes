@@ -8,7 +8,7 @@ public interface UserService {
 	User addUser(User user);
 	User getById(Long id);
 	List<User> getUsersList();
-	User updateUserInfo(User user);
+	User updateUserInfo(Long userId, User user);
 	void deleteUser(Long userId);
 	
 	List<User> getSortedUserList();

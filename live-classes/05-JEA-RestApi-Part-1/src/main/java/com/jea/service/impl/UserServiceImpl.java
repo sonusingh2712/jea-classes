@@ -36,8 +36,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User updateUserInfo(User user) {
-		User savedUser = getById(user.getId());
+	public User updateUserInfo(Long userId, User user) {
+		User savedUser = getById(userId);
 		savedUser.setUsername(user.getUsername());
 		savedUser.setPassword(user.getPassword());
 		savedUser.setEmail(user.getEmail());

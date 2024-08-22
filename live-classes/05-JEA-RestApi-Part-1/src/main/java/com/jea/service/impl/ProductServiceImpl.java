@@ -2,12 +2,15 @@ package com.jea.service.impl;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.jea.entities.Product;
 import com.jea.repository.ProductRepository;
 import com.jea.service.ProductService;
 
 import jakarta.persistence.EntityNotFoundException;
 
+@Service
 public class ProductServiceImpl implements ProductService {
 
 	@Autowired
@@ -29,9 +32,9 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product updateProductInfo(Product product) {
-		Product savedProduct = getById(product.getProductid());
-		savedProduct.setProductname(product.getProductname());
+	public Product updateProductInfo(Long productId, Product product) {
+		Product savedProduct = getById(productId);
+		savedProduct.setProductName(product.getProductName());
 		savedProduct.setPrice(product.getPrice());
 		return productRepository.save(savedProduct);
 	}
