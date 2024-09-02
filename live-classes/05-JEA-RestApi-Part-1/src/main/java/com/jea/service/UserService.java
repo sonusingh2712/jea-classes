@@ -12,4 +12,13 @@ public interface UserService {
 	void deleteUser(Long userId);
 	
 	List<User> getSortedUserList();
+	
+	//DSL method example
+	User findByUserName(String username);
+	
+	//JPQL method example
+	User findByEmailId(String emailId);
+	
+	//Native Query method example
+	User searchUserByUserNamePassword(String username, String password);
 }

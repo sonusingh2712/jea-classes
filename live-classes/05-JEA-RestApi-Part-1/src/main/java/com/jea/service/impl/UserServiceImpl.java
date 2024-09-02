@@ -60,4 +60,19 @@ public class UserServiceImpl implements UserService {
 		};
 		return getUsersList().stream().sorted(comparator).collect(Collectors.toList());
 	}
+
+	@Override
+	public User findByUserName(String username) {
+		return userRepository.findByusername(username);
+	}
+
+	@Override
+	public User findByEmailId(String emailId) {
+		return userRepository.searchUserByEmail(emailId);
+	}
+
+	@Override
+	public User searchUserByUserNamePassword(String username, String password) {
+		return userRepository.searchUserByUserNameAndPassword(username, password);
+	}
 }

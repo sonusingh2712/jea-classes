@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jea.entities.Product;
 import com.jea.service.ProductService;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("products")
 public class ProductController {
 	
 	@Autowired
@@ -40,7 +41,12 @@ public class ProductController {
 	}
 	
 	@DeleteMapping("/delete-product")
-	public void deleteProduct(@PathVariable Long productId) {
+	public void deleteProduct(@RequestParam Long productId) {
 		productService.deleteProduct(productId);
+	}
+	
+	@GetMapping("{barCode}")
+	public Product getProductByBarCode(@PathVariable String barCode){
+		return productService.findProductByBarCode(barCode);
 	}
 }

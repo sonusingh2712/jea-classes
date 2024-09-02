@@ -44,4 +44,19 @@ public class UserController {
 	public void deleteUserInfo(@RequestParam Long userId) {
 		userService.deleteUser(userId);
 	}
+	
+	@GetMapping("{username}")
+	public User getUserByUserName(@PathVariable String username) {
+		return userService.findByUserName(username);
+	}
+	
+	@GetMapping("/email/{email}")
+	public User getUserByEmail(@PathVariable String email) {
+		return userService.findByEmailId(email);
+	}
+	
+	@GetMapping("/search-user/{username}/{password}")
+	public User getUserByUserNamePassword(@PathVariable String username, @PathVariable String password) {
+		return userService.searchUserByUserNamePassword(username, password);
+	}
 }
