@@ -9,8 +9,11 @@ public interface ProductService {
 	List<Product> getProductsList();
 	Product updateProductInfo(Long productId, Product product);
 	void deleteProduct(Long productId);
-	
+	List<Product> saveAllProducts(List<Product> products);
 	//Implementing by DSL queries
 	
 	Product findProductByBarCode(String barCode);
+	
+	
+	
 }

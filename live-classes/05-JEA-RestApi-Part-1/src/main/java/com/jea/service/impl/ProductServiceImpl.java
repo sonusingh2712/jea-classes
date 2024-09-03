@@ -20,7 +20,12 @@ public class ProductServiceImpl implements ProductService {
 	public Product addProduct(Product product) {
 		return productRepository.save(product);
 	}
-
+	
+	@Override
+	public List<Product> saveAllProducts(List<Product> products) {
+		return productRepository.saveAll(products);
+	}
+	
 	@Override
 	public Product getById(Long id) {
 		return productRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Product does not exist in DB."));
