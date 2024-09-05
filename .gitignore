@@ -35,3 +35,12 @@ live-classes/04-JEA-SB-actuators/mvnw.cmd
 live-classes/05-JEA-RestApi-Part-1/.mvn/wrapper/maven-wrapper.properties
 live-classes/05-JEA-RestApi-Part-1/mvnw
 live-classes/05-JEA-RestApi-Part-1/mvnw.cmd
+ms-classes/accounts/.mvn/wrapper/maven-wrapper.properties
+ms-classes/accounts/mvnw
+ms-classes/accounts/mvnw.cmd
+ms-classes/cards/.mvn/wrapper/maven-wrapper.properties
+ms-classes/cards/mvnw
+ms-classes/cards/mvnw.cmd
+ms-classes/loans/.mvn/wrapper/maven-wrapper.properties
+ms-classes/loans/mvnw
+ms-classes/loans/mvnw.cmd
