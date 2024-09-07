@@ -9,4 +9,5 @@ public interface CategoryService {
 	List<Category> getCategoriesList();
 	Category updateCategoryInfo(Long categoryid, Category category);
 	void deleteCategory(Long id);
+	Category getCategoryByName(String categoryName);
 }

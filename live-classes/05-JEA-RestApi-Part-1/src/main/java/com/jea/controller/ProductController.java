@@ -54,4 +54,9 @@ public class ProductController {
 	public Product getProductByBarCode(@PathVariable String barCode){
 		return productService.findProductByBarCode(barCode);
 	}
+	
+	@DeleteMapping("/delete-product/{productName}")
+	public void deleteProductById(@PathVariable String productName) {
+		productService.deleteProductByName(productName);
+	}
 }

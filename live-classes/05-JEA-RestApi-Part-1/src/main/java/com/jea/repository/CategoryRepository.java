@@ -6,4 +6,6 @@ import com.jea.entities.Category;
 
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 	
+	//Example of DSL method
+	Category findByCategoryName(String categoryName);
 }

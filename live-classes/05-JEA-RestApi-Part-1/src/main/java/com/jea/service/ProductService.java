@@ -13,7 +13,7 @@ public interface ProductService {
 	//Implementing by DSL queries
 	
 	Product findProductByBarCode(String barCode);
-	
+	void deleteProductByName(String productName);
 	
 	
 }

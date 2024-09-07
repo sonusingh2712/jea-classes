@@ -54,4 +54,9 @@ public class ProductServiceImpl implements ProductService {
 	public Product findProductByBarCode(String barCode) {
 		return productRepository.findByBarCode(barCode);
 	}
+
+	@Override
+	public void deleteProductByName(String productName) {
+		productRepository.deleteByProductName(productName);
+	}
 }
