@@ -1,0 +1,326 @@
+{
+	
+	"item": [
+		{
+			"name": "jea-restapi-part-01",
+			"item": [
+				{
+					"name": "User-Controller",
+					"item": [
+						{
+							"name": "Add User",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\" : \"gautam_raj\",\r\n    \"email\" : \"gautamraj00001@gmail.com\",\r\n    \"password\" : \"abcd_1234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9092/users/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9092",
+									"path": [
+										"users",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All-Users List",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9092/users/all-users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9092",
+									"path": [
+										"users",
+										"all-users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update-User-Info",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"id\": 4,\r\n        \"username\": \"sonu_raj\",\r\n        \"email\": \"sonu_raj_updated@gmail.com\",\r\n        \"password\": \"abcd_1234\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9092/users/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9092",
+									"path": [
+										"users",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete-User",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"id\": 4,\r\n        \"username\": \"sonu_raj\",\r\n        \"email\": \"sonu_raj@gmail.com\",\r\n        \"password\": \"abcd_1234\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9092/users/delete-user?userId=7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9092",
+									"path": [
+										"users",
+										"delete-user"
+									],
+									"query": [
+										{
+											"key": "userId",
+											"value": "7"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get User By Email",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9092/users/email/gautamraj00001@gmail.com",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9092",
+									"path": [
+										"users",
+										"email",
+										"gautamraj00001@gmail.com"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Product-Controller",
+					"item": [
+						{
+							"name": "Add Product",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"productName\": \"Alarm Watch\",\r\n  \"price\": 500.00,\r\n  \"quantity\": 50,\r\n  \"description\": \"Orpat alarm watch for students\",\r\n  \"isStock\": true,\r\n  \"category\": {\r\n    \"categoryId\": 7,\r\n    \"categoryName\": \"Watch\"\r\n  }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9092/products/add",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9092",
+									"path": [
+										"products",
+										"add"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add All Products",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n  {\r\n    \"productName\": \"Royal Enfield Stealth Black 350\",\r\n    \"price\": 300000,\r\n    \"quantity\": 5,\r\n    \"description\": \"Most Selling Bike\",\r\n    \"isStock\": true,\r\n    \"category\": {\r\n      \"categoryId\": 5,\r\n      \"categoryName\": \"Bike\"\r\n    }\r\n  },\r\n  {\r\n    \"productName\": \"Royal Enfield Hunter 350\",\r\n    \"price\": 250000,\r\n    \"quantity\": 15,\r\n    \"description\": \"New Cruise Motorcycle\",\r\n    \"isStock\": true,\r\n    \"category\": {\r\n      \"categoryId\": 5,\r\n      \"categoryName\": \"Bike\"\r\n    }\r\n  },\r\n  {\r\n    \"productName\": \"Royal Enfield Meteor 350\",\r\n    \"price\": 310000,\r\n    \"quantity\": 10,\r\n    \"description\": \"Most Comfortable Cruise Bike\",\r\n    \"isStock\": true,\r\n    \"category\": {\r\n      \"categoryId\": 5,\r\n      \"categoryName\": \"Bike\"\r\n    }\r\n  },\r\n  {\r\n    \"productName\": \"Royal Enfield Intercepter\",\r\n    \"price\": 400000,\r\n    \"quantity\": 3,\r\n    \"description\": \"Classic Roadways Super Bike\",\r\n    \"isStock\": true,\r\n    \"category\": {\r\n      \"categoryId\": 5,\r\n      \"categoryName\": \"Bike\"\r\n    }\r\n  },\r\n  {\r\n    \"productName\": \"Royal Enfield Continental\",\r\n    \"price\": 470000,\r\n    \"quantity\": 8,\r\n    \"description\": \"Dual Silencer Super Bike\",\r\n    \"isStock\": true,\r\n    \"category\": {\r\n      \"categoryId\": 5,\r\n      \"categoryName\": \"Bike\"\r\n    }\r\n  }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9092/products/add-all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9092",
+									"path": [
+										"products",
+										"add-all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All-Products List",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9092/products/all-products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9092",
+									"path": [
+										"products",
+										"all-products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Product",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9092/products/delete-product?productId=16",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9092",
+									"path": [
+										"products",
+										"delete-product"
+									],
+									"query": [
+										{
+											"key": "productId",
+											"value": "16"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Category-Controller",
+					"item": [
+						{
+							"name": "All-Categories List",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9092/api/v1/categories",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9092",
+									"path": [
+										"api",
+										"v1",
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add Category",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\r\n        \"categoryName\": \"Watch\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9092/api/v1/categories",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9092",
+									"path": [
+										"api",
+										"v1",
+										"categories"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
