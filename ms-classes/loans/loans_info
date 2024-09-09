@@ -1,0 +1,6 @@
+Notes:
+--------------------------------------------------------------------------
+
+SERVER PORT = 9005
+H2 DB Connections Details = [url = jdbc:h2:mem:loansdb; username = loans; password = 12345]
+Enable Actuators = true 
