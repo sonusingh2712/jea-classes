@@ -11,7 +11,7 @@ import com.jea.cards.dto.CardsDetailDto;
 import com.jea.cards.service.CardsService;
 
 @RestController
-@RequestMapping("/cards")
+@RequestMapping("/api/v1/cards")
 public class CardsController {
 	
 	@Autowired

@@ -1,10 +1,12 @@
 package com.jea.accounts.service.impl;
 
+import java.util.Optional;
 import java.util.Random;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import com.jea.accounts.dto.AccountsDto;
 import com.jea.accounts.dto.CustomerDetailsDto;
@@ -14,6 +16,7 @@ import com.jea.accounts.repository.AccountsRepository;
 import com.jea.accounts.repository.CustomerRepository;
 import com.jea.accounts.service.AccountsService;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -61,4 +64,53 @@ public class AccountsServiceImpl implements AccountsService {
 		return accounts;
 	}
 
+	@Override
+	public CustomerDetailsDto getAccountDetails(String mobileNumber) {
+		Customer customer = customerRepository.findByMobileNumber(mobileNumber).orElseThrow(
+				() -> new EntityNotFoundException("No any customer is available with mobile number ::"+mobileNumber));
+		Accounts accounts = accountsRepository.findByCustomerId(customer.getCustomerId()).orElseThrow(
+				() -> new EntityNotFoundException("No any accounts found with mobile number ::"+mobileNumber));
+		
+		AccountsDto accountsDto = new AccountsDto();
+		BeanUtils.copyProperties(accounts, accountsDto);
+		
+		CustomerDetailsDto customerDetailsDto = new CustomerDetailsDto();
+		BeanUtils.copyProperties(customer, customerDetailsDto);
+		
+		customerDetailsDto.setAccountsDto(accountsDto);
+		
+		return customerDetailsDto;
+	}
+
+	@Override
+	public boolean updateAccountInformation(CustomerDetailsDto customerDetailsDto) {
+		var accountsDto = customerDetailsDto.getAccountsDto();
+		if(accountsDto == null) {
+			throw new IllegalArgumentException("Account details are missing.");
+		}
+		Accounts accounts = accountsRepository.findById(accountsDto.getAccountNumber()).orElseThrow(() -> new EntityNotFoundException("Account not found."));
+		BeanUtils.copyProperties(customerDetailsDto, accounts);
+		accounts = accountsRepository.save(accounts);
+		
+		Customer savedCustomer = customerRepository.findById(accounts.getCustomerId()).orElseThrow(() -> new EntityNotFoundException("Customer Not Found."));
+		BeanUtils.copyProperties(customerDetailsDto, savedCustomer);
+		savedCustomer = customerRepository.save(savedCustomer);
+		return true;
+	}
+
+	
+	@Override
+	public boolean deleteAccountInformation(String mobileNumber) {
+		Customer savedCustomer = customerRepository.findByMobileNumber(mobileNumber).orElseThrow(() -> new EntityNotFoundException("Customer Not Found."));
+//		Optional<Accounts> accounts = accountsRepository.findById(savedCustomer.getCustomerId());
+//		accounts.ifPresent(savedData -> accountsRepository.delete(savedData));
+/*		if(accounts.isPresent()) {
+			accountsRepository.delete(accounts.get());
+		}
+*/
+//		customerRepository.delete(savedCustomer);
+		
+		accountsRepository.deleteByCustomerId(savedCustomer.getCustomerId());
+		return true;
+	}
 }

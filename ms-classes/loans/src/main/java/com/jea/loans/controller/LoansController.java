@@ -12,7 +12,7 @@ import com.jea.loans.dto.LoansDetailDto;
 import com.jea.loans.service.LoansService;
 
 @RestController
-@RequestMapping("/loans")
+@RequestMapping("/api/v1/loans")
 public class LoansController {
 	
 	@Autowired
