@@ -1,12 +1,10 @@
 package com.jea.accounts.service.impl;
 
-import java.util.Optional;
 import java.util.Random;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ObjectUtils;
 
 import com.jea.accounts.dto.AccountsDto;
 import com.jea.accounts.dto.CustomerDetailsDto;
@@ -111,6 +109,7 @@ public class AccountsServiceImpl implements AccountsService {
 //		customerRepository.delete(savedCustomer);
 		
 		accountsRepository.deleteByCustomerId(savedCustomer.getCustomerId());
+		customerRepository.deleteById(savedCustomer.getCustomerId());
 		return true;
 	}
 }

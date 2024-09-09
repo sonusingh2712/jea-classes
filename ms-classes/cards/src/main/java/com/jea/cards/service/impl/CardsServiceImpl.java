@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import com.jea.cards.dto.CardsDetailDto;
@@ -14,6 +15,7 @@ import com.jea.cards.service.CardsService;
 
 import jakarta.persistence.EntityNotFoundException;
 
+@Service
 public class CardsServiceImpl implements CardsService {
 	
 	@Autowired
