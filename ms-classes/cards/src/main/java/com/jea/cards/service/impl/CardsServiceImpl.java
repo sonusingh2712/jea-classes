@@ -12,6 +12,8 @@ import com.jea.cards.dto.CardsDetailDto;
 import com.jea.cards.entities.Cards;
 import com.jea.cards.repository.CardsRepository;
 import com.jea.cards.service.CardsService;
+import com.jea.cards.util.CardsConstants;
+import com.jea.cards.util.CreditCardNumberGenerator;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -50,5 +52,32 @@ public class CardsServiceImpl implements CardsService {
 		}
 		return listOfCards;
 	}
+
+	@Override
+	public CardsDetailDto saveNewCard(String mobileNumber) {
+		Cards newCardInfo = generateNewCard(mobileNumber);
+		newCardInfo = cardsRepository.save(newCardInfo);
+		
+		CardsDetailDto cardsDetailDto = new CardsDetailDto();
+		BeanUtils.copyProperties(newCardInfo, cardsDetailDto);
+		return cardsDetailDto;
+	}
+	
+	private Cards generateNewCard(String mobileNumber) {
+		String newCardNumber = CreditCardNumberGenerator.
+				generate(CardsConstants.CREDIT_CARD_PREFIX, CardsConstants.CREDIT_CARD_NUMBER_LENGTH);
+		
+		Cards newCardInfo = new Cards();
+		newCardInfo.setMobileNumber(mobileNumber);
+		newCardInfo.setCardNumber(newCardNumber);
+		newCardInfo.setCardType(CardsConstants.CREDIT_CARD_TYPE);
+		newCardInfo.setTotalLimit(CardsConstants.CREDIT_CARD_TOTAL_LIMIT);
+		newCardInfo.setAmountUsed(CardsConstants.CREDIT_CARD_AMOUNT_USED);
+		newCardInfo.setAvailableAmount(CardsConstants.CREDIT_CARD_AVAILABLE_AMOUNT);
+		
+		return newCardInfo;
+	}
+	
+	
 
 }

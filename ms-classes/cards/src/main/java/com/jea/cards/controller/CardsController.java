@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jea.cards.dto.CardsDetailDto;
@@ -20,5 +22,10 @@ public class CardsController {
 	@GetMapping("all-cards")
 	public List<CardsDetailDto> getAllCards(){
 		return cardsService.getAllCards();
+	}
+	
+	@PostMapping
+	public CardsDetailDto getNewCard(@RequestParam String mobileNumber) {
+		return cardsService.saveNewCard(mobileNumber);
 	}
 }

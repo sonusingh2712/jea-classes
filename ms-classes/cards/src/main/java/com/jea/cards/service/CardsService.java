@@ -9,5 +9,6 @@ public interface CardsService {
 	CardsDetailDto getCardById(Long cardId);
 	List<CardsDetailDto> getAllCards();
 	
+	CardsDetailDto saveNewCard(String mobileNumber);
 	
 }

@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CardsDetailDto {
-	private Long cardId;
 	
 	private String mobileNumber;
 	private String cardNumber;
