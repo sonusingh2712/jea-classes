@@ -29,3 +29,14 @@ info:
     version: 0.0.1
     description: cards microservice project
   contact: '+1234567890'
+
+#Configure eureka client properties
+eureka:
+  client:
+    service-url:
+#'/' is very importamt at last, otherwise defaultZone url won't pick-up
+      defaultZone: http://localhost:9002/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true

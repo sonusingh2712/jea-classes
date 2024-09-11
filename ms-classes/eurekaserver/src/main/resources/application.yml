@@ -1,0 +1,25 @@
+# Conversion to YAML from Properties formar report
+# Warnings:
+# - The yaml file had comments which are lost in the refactoring!
+spring:
+  application:
+    name: eurekaserver
+#Configure eureka client properties
+eureka:
+  client:
+    service-url:
+#'/' is very importamt at last, otherwise defaultZone url won't pick-up
+      defaultZone: http://localhost:9002/eureka/
+    register-with-eureka: false
+    fetch-registry: false
+  instance:
+    prefer-ip-address: true
+
+server:
+  port: 9002
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

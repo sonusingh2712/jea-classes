@@ -27,14 +27,4 @@ public class Cards {
 	private int amountUsed;
 	private int availableAmount;
 	
-	public Cards(String mobileNumber, String cardNumber, String cardType, int totalLimit, int amountUsed, int availableAmount) {
-		this.mobileNumber = mobileNumber;
-		this.cardNumber = cardNumber;
-		this.cardType = cardType;
-		this.totalLimit = totalLimit;
-		this.amountUsed = amountUsed;
-		this.availableAmount = availableAmount;
-	}
-	
-	
 }
