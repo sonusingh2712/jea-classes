@@ -18,7 +18,7 @@ public class Records {
 	@Autowired
 	private CardsService cardsService;
 	
-//	@PostConstruct
+	@PostConstruct
 	public void saveListOfRecords() {
 		List<String> listOfMobileNumber = Stream.of("9999988888","8888877777","7777766666","6666699999",
 													"9999898888","8888787777","7777676666","6666969999").

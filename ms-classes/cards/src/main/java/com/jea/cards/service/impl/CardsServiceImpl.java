@@ -77,7 +77,28 @@ public class CardsServiceImpl implements CardsService {
 		
 		return newCardInfo;
 	}
-	
-	
 
+	@Override
+	public boolean updateCardInfo(String mobileNumber, CardsDetailDto cardsDetailDto) {
+		Cards cards = cardsRepository.findByMobileNumber(mobileNumber).orElseThrow(() -> new EntityNotFoundException("No any card is linked with mobile number ::"+mobileNumber));
+		BeanUtils.copyProperties(cardsDetailDto, cards);
+		cards = cardsRepository.save(cards);
+		return true;
+	}
+
+	@Override
+	public boolean deleteCard(String mobileNumber) {
+		Cards cards = cardsRepository.findByMobileNumber(mobileNumber).orElseThrow(() -> new EntityNotFoundException("No any card is linked with mobile number ::"+mobileNumber));
+		cardsRepository.deleteById(cards.getCardId());
+		return true;
+	}
+
+	@Override
+	public int checkAvailableBalance(String mobileNumber, int amountUsed) {
+		Cards cards = cardsRepository.findByMobileNumber(mobileNumber).orElseThrow(() -> new EntityNotFoundException("No any card is linked with mobile number ::"+mobileNumber));
+		int availableBalance = cards.getAvailableAmount() - amountUsed;
+		cards.setAvailableAmount(availableBalance);
+		cardsRepository.save(cards);
+		return availableBalance;
+	}
 }
