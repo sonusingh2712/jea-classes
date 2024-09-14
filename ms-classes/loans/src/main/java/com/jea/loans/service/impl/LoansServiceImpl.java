@@ -45,7 +45,6 @@ public class LoansServiceImpl implements LoansService {
 		return loans;
 	}
 	
-
 	@Override
 	public LoansDetailDto getLoanById(Long id) {
 		Loans savedLoans = loansRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(" No any loan found with id :: "+id));
@@ -53,7 +52,6 @@ public class LoansServiceImpl implements LoansService {
 		BeanUtils.copyProperties(savedLoans, loansDetailDto);
 		return loansDetailDto;
 	}
-	
 	
 	@Override
 	public List<LoansDetailDto> getAllLoans() {
@@ -69,7 +67,6 @@ public class LoansServiceImpl implements LoansService {
 		return listOfLoans;
 	}
 	
-
 	private List<LoansDetailDto> setDbRecordsToDetailsDto(List<Loans> listOfLoansInDB) {
 		//If there is no any loan associated with mobileNumber
 		if(ObjectUtils.isEmpty(listOfLoansInDB)) {
@@ -84,4 +81,19 @@ public class LoansServiceImpl implements LoansService {
 		}
 		return listOfLoans;
 	}
+
+	@Override
+	public boolean updateLoanDetails(LoansDetailDto loansDetailDto) {
+		Loans savedLoanDetails = loansRepository.findByMobileNumber(loansDetailDto.getMobileNumber())
+				.orElseThrow(() -> new EntityNotFoundException("Could found loan details with mobile Number ::: "+loansDetailDto.getMobileNumber()));
+		BeanUtils.copyProperties(loansDetailDto, savedLoanDetails);
+		loansRepository.save(savedLoanDetails);
+		return true;
+	}
+
+	@Override
+	public void deleteLoansDetails(String mobileNumber) {
+		loansRepository.deleteByMobileNumber(mobileNumber);
+	}
+		
 }

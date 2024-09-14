@@ -12,4 +12,7 @@ public interface LoansService {
 	List<LoansDetailDto> getAllLoans();
 	List<LoansDetailDto> getAllLoansDetail(String mobileNumber);
 
+	boolean updateLoanDetails(LoansDetailDto loansDetailDto);
+	void deleteLoansDetails(String mobileNumber);
+
 }
