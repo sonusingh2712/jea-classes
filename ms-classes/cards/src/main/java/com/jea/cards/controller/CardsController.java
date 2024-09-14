@@ -32,8 +32,8 @@ public class CardsController {
 		return cardsService.getCardById(cardId);
 	}
 	
-	@PostMapping("/new-card")
-	public CardsDetailDto getNewCard(@RequestParam String mobileNumber) {
+	@PostMapping
+	public CardsDetailDto createCard(@RequestParam String mobileNumber) {
 		return cardsService.saveNewCard(mobileNumber);
 	}
 	

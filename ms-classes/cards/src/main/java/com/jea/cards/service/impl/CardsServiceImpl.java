@@ -90,6 +90,9 @@ public class CardsServiceImpl implements CardsService {
 	public boolean deleteCard(String mobileNumber) {
 		Cards cards = cardsRepository.findByMobileNumber(mobileNumber).orElseThrow(() -> new EntityNotFoundException("No any card is linked with mobile number ::"+mobileNumber));
 		cardsRepository.deleteById(cards.getCardId());
+		
+		/** We can use direct DSL method also.*/
+//		cardsRepository.deleteByMobileNumber(mobileNumber);
 		return true;
 	}
 

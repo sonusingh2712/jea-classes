@@ -1,5 +1,7 @@
 package com.jea.loans.entities;
 
+import org.hibernate.annotations.UuidGenerator;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,8 +18,9 @@ public class Loans {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long loanId;
-	private String mobileNumber;
+	@UuidGenerator
 	private String loanNumber;
+	private String mobileNumber;
 	private String loanType;
 	private int totalLoan;
 	private int amountPaid;

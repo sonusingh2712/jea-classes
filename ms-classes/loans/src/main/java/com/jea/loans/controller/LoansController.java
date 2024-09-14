@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +19,16 @@ public class LoansController {
 	@Autowired
 	private LoansService loansService;
 	
+	@PostMapping("/{mobileNumber}")
+	public LoansDetailDto createNewLoan(@PathVariable String mobileNumber) {
+		return loansService.createNewLoan(mobileNumber);
+	}
+	
+	@GetMapping("/id/{loanId}")
+	public LoansDetailDto getLoanById(@PathVariable Long loanId){
+		return loansService.getLoanById(loanId);
+	}
+	
 	@GetMapping
 	public List<LoansDetailDto> getAllLoans(){
 		return loansService.getAllLoans();
@@ -28,8 +39,4 @@ public class LoansController {
 		return loansService.getAllLoansDetail(mobileNumber);
 	}
 	
-	@GetMapping("/id/{loanId}")
-	public LoansDetailDto getLoanById(@PathVariable Long loanId){
-		return loansService.getLoanById(loanId);
-	}
 }
