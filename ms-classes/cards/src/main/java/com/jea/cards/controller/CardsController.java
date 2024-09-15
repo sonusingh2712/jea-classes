@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,13 +28,18 @@ public class CardsController {
 		return cardsService.getAllCards();
 	}
 	
-	@GetMapping("/{cardId}")
-	public CardsDetailDto getCardsInfoById(Long cardId) {
+	@GetMapping()
+	public CardsDetailDto getCardsInfoById(@RequestParam Long cardId) {
 		return cardsService.getCardById(cardId);
 	}
 	
-	@PostMapping
-	public CardsDetailDto createCard(@RequestParam String mobileNumber) {
+	@GetMapping("/{mobileNumber}")
+	public CardsDetailDto getCardsInfoByMobileNumber(@PathVariable String mobileNumber) {
+		return cardsService.getCardByMobileNumber(mobileNumber);
+	}
+	
+	@PostMapping("/{mobileNumber}")
+	public CardsDetailDto createCard(@PathVariable String mobileNumber) {
 		return cardsService.saveNewCard(mobileNumber);
 	}
 	
@@ -47,7 +53,7 @@ public class CardsController {
 		return cardsService.deleteCard(mobileNumber);
 	}
 	
-	@GetMapping
+	@GetMapping("/balance-check")
 	public int checkAvailableBalance(@RequestParam String mobileNumber, @RequestParam int amountUsed) {
 		return cardsService.checkAvailableBalance(mobileNumber, amountUsed);
 	}

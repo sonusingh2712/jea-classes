@@ -1,5 +1,7 @@
 package com.jea.accounts.dto;
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -9,5 +11,8 @@ public class CustomerDetailsDto {
 	private String name;
 	private String email;
 	private String mobileNumber;
+	
 	private AccountsDto accountsDto;
+	private List<LoansDetailDto> loansDetailsDto;
+	private CardsDetailDto cardsDetailsDto;
 }

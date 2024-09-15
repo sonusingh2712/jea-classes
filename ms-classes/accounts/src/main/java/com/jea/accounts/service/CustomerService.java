@@ -1,5 +1,7 @@
 package com.jea.accounts.service;
 
-public interface CustomerService {
+import com.jea.accounts.dto.CustomerDetailsDto;
 
+public interface CustomerService {
+	CustomerDetailsDto getCustomerDetails(String mobileNumber);
 }
