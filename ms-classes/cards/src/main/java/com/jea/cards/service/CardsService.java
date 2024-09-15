@@ -7,7 +7,7 @@ import com.jea.cards.dto.CardsDetailDto;
 public interface CardsService {
 	
 	CardsDetailDto getCardById(Long cardId);
-	
+	CardsDetailDto getCardByMobileNumber(String mobileNumber);
 	List<CardsDetailDto> getAllCards();
 	
 	CardsDetailDto saveNewCard(String mobileNumber);
@@ -17,4 +17,5 @@ public interface CardsService {
 	boolean deleteCard(String mobileNumber);
 
 	int checkAvailableBalance(String mobileNumber, int amountUsed);
+
 }

@@ -10,5 +10,7 @@ public interface CardsRepository extends JpaRepository<Cards, Long>{
 
 	//DSL Method, Find Cards Info Using Mobile Number
 	Optional<Cards> findByMobileNumber(String mobileNumber);
+
+	void deleteByMobileNumber(String mobileNumber);
 	
 }

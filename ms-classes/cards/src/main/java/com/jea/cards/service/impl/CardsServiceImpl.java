@@ -30,6 +30,14 @@ public class CardsServiceImpl implements CardsService {
 		BeanUtils.copyProperties(savedCard, cardsDetailDto);
 		return cardsDetailDto;
 	}
+	
+	@Override
+	public CardsDetailDto getCardByMobileNumber(String mobileNumber) {
+		Cards savedCard = cardsRepository.findByMobileNumber(mobileNumber).orElseThrow(() -> new EntityNotFoundException("No any card is linked with mobile number ::"+mobileNumber));
+		CardsDetailDto cardsDetailDto = new CardsDetailDto();
+		BeanUtils.copyProperties(savedCard, cardsDetailDto);
+		return cardsDetailDto;
+	}
 
 	@Override
 	public List<CardsDetailDto> getAllCards() {
@@ -90,6 +98,9 @@ public class CardsServiceImpl implements CardsService {
 	public boolean deleteCard(String mobileNumber) {
 		Cards cards = cardsRepository.findByMobileNumber(mobileNumber).orElseThrow(() -> new EntityNotFoundException("No any card is linked with mobile number ::"+mobileNumber));
 		cardsRepository.deleteById(cards.getCardId());
+		
+		/** We can use direct DSL method also.*/
+//		cardsRepository.deleteByMobileNumber(mobileNumber);
 		return true;
 	}
 
